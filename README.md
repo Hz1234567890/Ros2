@@ -83,3 +83,13 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
 
 ![显示效果](./images/Ros测试.png)
+#### 1.6.3
+开启乌龟仿真
+
+    ros2 run turtlesim turtlesim_node
+再启动一个终端，运行
+
+    ros2 run turtlesim turtle_teleop_key
+用键盘控制乌龟运动
+
+### 二、ROS2命令行操作
