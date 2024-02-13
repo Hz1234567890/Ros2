@@ -153,3 +153,4 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
 >
 >变为
 >>ros2 topic pub --rate 1 /shuizao/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}"
+### 2.6ros2 bag
