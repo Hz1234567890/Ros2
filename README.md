@@ -92,4 +92,64 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
     ros2 run turtlesim turtle_teleop_key
 用键盘控制乌龟运动
 
-### 二、ROS2命令行操作
+## 二、ROS2命令行操作
+所有操作都集成在一个ros2的总命令中，后边第一个参数表示不同的操作目的，**比如node表示对节点的操作，topic表示对话题的操作**
+### 2.1运行节点程序
+
+    ros2 run 。。。
+    
+#### 例如运行海龟仿真节点和键盘控制节点
+
+    ros2 run turtlesim turtlesim_node
+    ros2 run turtlesim turtle_teleop_key
+
+### 2.2查询节点信息
+查看当前运行的ros2系统中都有哪些节点
+
+    ros2 node list
+
+##### 生成ros node的帮助文档
+    ros2 node
+
+利用info子命令，查看某一节点的详细信息
+    
+    ros2 node info 节点名称
+
+    例如：
+    ros2 node info /turtlesim 
+
+### 2.3查看话题信息
+查看当前系统中都有哪些话题
+    ros2 topic list
+##### 生成ros2 topic的帮助文档
+    ros2 topic
+利用echo子命令，生成某一话题的消息数据
+
+    ros2 topic echo 话题名称
+    
+    例如：
+    ros2 topic echo /turtle1/pose 
+
+### 2.4发布话题信息
+例:通过命令行发布话题指令来控制海龟，让海龟动起来<br>
+
+
+    ros2 topic pub --rate 1 /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}"
+
+显示效果：<br>![发布话题信息](./images/发布话题信息.png)
+
+### 2.5发送服务请求
+例：产生新的海龟<br>
+    
+    ros2 service call /spawn turtlesim/srv/Spawn "{x: 2, y: 2, theta: 0.2, name: 'shuizao'}"
+##### 生成ros2 service的帮助文档
+
+    ros2 service
+显示效果：<br>![发送话题请求](./images/发送服务请求--产生新海龟.png)
+>在这里，我生成了一个名为“shuizao”的新乌龟，若想控制这只乌龟，需要将接口名称改为/shuizao/······<br>
+具体接口名称可在**ros2 topic list**中查看<br>
+例：
+>>ros2 topic pub --rate 1 /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}"<br>
+>
+>变为
+>>ros2 topic pub --rate 1 /shuizao/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}"
