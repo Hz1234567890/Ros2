@@ -164,3 +164,5 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
     ros2 bag record /turtle1/cmd_vel
     ros2 bag play rosbag2_2024_02_14-17_10_00/rosbag2_2024_02_14-17_10_00_0.db3
+
+## 三、
