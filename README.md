@@ -153,4 +153,14 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
 >
 >变为
 >>ros2 topic pub --rate 1 /shuizao/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}"
-### 2.6ros2 bag
+### 2.6录制控制命令
+录制
+
+    ros2 bag record 节点名称
+播放
+
+    ros2 bag play 文件路径
+例：录制并播放乌龟的运动路径
+
+    ros2 bag record /turtle1/cmd_vel
+    ros2 bag play rosbag2_2024_02_14-17_10_00/rosbag2_2024_02_14-17_10_00_0.db3
