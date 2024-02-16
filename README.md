@@ -165,5 +165,10 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
     ros2 bag record /turtle1/cmd_vel
     ros2 bag play rosbag2_2024_02_14-17_10_00/rosbag2_2024_02_14-17_10_00_0.db3
 
-## 三、创建工作空间
+## 三、工作空间
 ### 2.1创建工作空间
+
+    mkdir -p ~/dev_ws/src
+    cd ~/dev_ws/src
+    git clone https://github.com/ros/ros_tutorials.git -b humble
+### 
