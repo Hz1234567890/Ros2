@@ -166,12 +166,12 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
     ros2 bag play rosbag2_2024_02_14-17_10_00/rosbag2_2024_02_14-17_10_00_0.db3
 
 ## 三、工作空间
-### 2.1创建工作空间
+### 3.1创建工作空间
 
     mkdir -p ~/dxy/src
     cd ~/dxy/src
     git clone https://github.com/ros/ros_tutorials.git -b humble
-### 2.2自动安装依赖
+### 3.2自动安装依赖
 
     sudo apt install -y python3-pip
     sudo pip3 install rosdepc
@@ -179,15 +179,50 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
     rosdepc update
     cd ..
     rosdepc install -i --from-path src --rosdistro humble -y
-### 2.3编译工作空间
+### 3.3编译工作空间
 
     sudo apt install python3-colcon-ros
     cd ~/dxy/
     colcon build
 
-### 2.4设置环境变量
+### 3.4设置环境变量
 
     source install/local_setup.sh # 该工作空间仅在当前终端生效
     echo " source ~/dxy/install/local_setup.sh" >> ~/.bashrc # 该工作空间在所有终端均生效
+
+## 四、创建一个软件包
+### 4.1创建功能包
+
+    ros2 pkg create --build-type <build-type> --license Apache-2.0 <package_name>
+>   **pkg**：表示功能包相关的功能；<br>
+    **create**：表示创建功能包；<br>
+    **build-type**：表示新创建的功能包是C++还是Python的，如果使用C++或者C，那这里就跟ament_cmake，如果使用Python，就跟ament_python；<br>
+    **package_name**：新建功能包的名字。<br>
+
+例如：
+
+    cd ~/dxy/src
+    ros2 pkg create --build-type ament_cmake shuizao               # C++
+    ros2 pkg create --build-type ament_python shuizao               # Python
+
+    现在你将在工作区src目录中拥有一个名为shuizao的新文件夹。
+
+### 4.2编译功能包
+在创建好的功能包中，我们可以继续完成代码的编写，之后需要编译和配置环境变量，才能正常运行：
+
+    cd ~/dxy
+    colcon build   # 编译工作空间所有功能包
+    colcon build --packages-select <package_name>   #编译工作空间中指定名称的功能包，在功能包较多的情况下可以节省时间
+    source install/local_setup.sh
+### 4.3功能包的结构
+具体参考[ros2官网文档]（https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html）<br>
+**Python功能包**<br>
+package.xml包含功能包的版权描述，和各种依赖的声明。
+![package.xml的功能](/images/package.xml.png)
+setup.py文件里边也包含一些版权信息，除此之外，还有“entry_points”配置的程序入口，教程里说后面回讲如何使用的
+![setup.py的功能](/images/setup.py.png)
+
+
+
 
 
