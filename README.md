@@ -215,7 +215,7 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
     colcon build --packages-select <package_name>   #编译工作空间中指定名称的功能包，在功能包较多的情况下可以节省时间
     source install/local_setup.sh
 ### 4.3功能包的结构
-具体参考[ros2官网文档]（https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html）<br>
+具体参考ros2官网文档https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html<br>
 **Python功能包**<br>
 package.xml包含功能包的版权描述，和各种依赖的声明。
 ![package.xml的功能](/images/package.xml.png)
