@@ -171,4 +171,23 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
     mkdir -p ~/dev_ws/src
     cd ~/dev_ws/src
     git clone https://github.com/ros/ros_tutorials.git -b humble
-### 
+### 2.2自动安装依赖
+
+    sudo apt install -y python3-pip
+    sudo pip3 install rosdepc
+    sudo rosdepc init
+    rosdepc update
+    cd ..
+    rosdepc install -i --from-path src --rosdistro humble -y
+### 2.3编译工作空间
+
+    sudo apt install python3-colcon-ros
+    cd ~/dev_ws/
+    colcon build
+
+### 2.4设置环境变量
+
+    source install/local_setup.sh # 仅在当前终端生效
+    echo " source ~/dxy/install/local_setup.sh" >> ~/.bashrc # 所有终端均生效
+
+
