@@ -166,10 +166,11 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
     ros2 bag play rosbag2_2024_02_14-17_10_00/rosbag2_2024_02_14-17_10_00_0.db3
 
 ## 三、工作空间
+**官网文档提到了源叠加层和叠加层的概念，但是还没弄明白**
 ### 2.1创建工作空间
 
-    mkdir -p ~/dev_ws/src
-    cd ~/dev_ws/src
+    mkdir -p ~/dxy/src
+    cd ~/dxy/src
     git clone https://github.com/ros/ros_tutorials.git -b humble
 ### 2.2自动安装依赖
 
@@ -182,7 +183,7 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
 ### 2.3编译工作空间
 
     sudo apt install python3-colcon-ros
-    cd ~/dev_ws/
+    cd ~/dxy/
     colcon build
 
 ### 2.4设置环境变量
