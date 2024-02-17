@@ -166,6 +166,9 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
     ros2 bag play rosbag2_2024_02_14-17_10_00/rosbag2_2024_02_14-17_10_00_0.db3
 
 ## 三、工作空间
+>source /opt/ros/humble/setup.bash或source /opt/ros/humble/setup.sh用于获取ros2的安装。**在新建终端中没有输入这两个命令行无法实现ros2命令。**利用echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc 将它写入./bashrc中后，在所有终端都会自动获取ros2安装
+
+>source install/local_setup.sh用于获取工作区，利用echo " source ~/dxy/install/local_setup.sh" >> ~/.bashrc将它写入./bashrc中后，在所有终端都会自动获取该工作区（优先级最高）
 ### 3.1创建工作空间
 
     mkdir -p ~/dxy/src
@@ -221,8 +224,12 @@ package.xml包含功能包的版权描述，和各种依赖的声明。
 ![package.xml的功能](/images/package.xml.png)
 setup.py文件里边也包含一些版权信息，除此之外，还有“entry_points”配置的程序入口，教程里说后面回讲如何使用的
 ![setup.py的功能](/images/setup.py.png)
+## 五、编写简单的发布者和订阅者 （Python）
+接下来将创建节点，这些节点通过主题以字符串消息的形式相互传递信息。 这里使用的示例是一个简单的“说话者”和“倾听者”系统; 一个节点发布数据，另一个节点订阅主题，以便它可以接收该数据。
+### 5.1创建软件包
 
+    ros2 pkg create --build-type ament_python --license Apache-2.0 py_pubsub
 
-
+### 5.2
 
 
