@@ -166,7 +166,6 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
     ros2 bag play rosbag2_2024_02_14-17_10_00/rosbag2_2024_02_14-17_10_00_0.db3
 
 ## 三、工作空间
-**官网文档提到了源叠加层和叠加层的概念，但是还没弄明白**
 ### 2.1创建工作空间
 
     mkdir -p ~/dxy/src
@@ -188,7 +187,7 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
 ### 2.4设置环境变量
 
-    source install/local_setup.sh # 仅在当前终端生效
-    echo " source ~/dxy/install/local_setup.sh" >> ~/.bashrc # 所有终端均生效
+    source install/local_setup.sh # 该工作空间仅在当前终端生效
+    echo " source ~/dxy/install/local_setup.sh" >> ~/.bashrc # 该工作空间在所有终端均生效
 
 
