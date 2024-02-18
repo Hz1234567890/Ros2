@@ -319,3 +319,5 @@ setup.py文件里边也包含一些版权信息，除此之外，还有“entry_
     ros2 run py_pubsub listener
 ![5.7.4执行结果](/images/5.7.4执行结果.png)
 
+## 六、节点
+
