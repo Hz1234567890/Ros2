@@ -196,7 +196,7 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
 ## 四、创建一个软件包
 ### 4.1创建功能包
 
-    ros2 pkg create --build-type <build-type> --license Apache-2.0 <package_name>
+    ros2 pkg create --build-type <build-type> --license Apache-2.0 --node-name my_node <package_name>
 >   **pkg**：表示功能包相关的功能；<br>
     **create**：表示创建功能包；<br>
     **build-type**：表示新创建的功能包是C++还是Python的，如果使用C++或者C，那这里就跟ament_cmake，如果使用Python，就跟ament_python；<br>
@@ -205,8 +205,8 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
 例如：
 
     cd ~/dxy/src
-    ros2 pkg create --build-type ament_cmake shuizao               # C++
-    ros2 pkg create --build-type ament_python shuizao               # Python
+    ros2 pkg create --build-type ament_cmake --license Apache-2.0 --node-name my_node shuizao               # C++
+    ros2 pkg create --build-type ament_python --license Apache-2.0 --node-name my_node shuizao               # Python
 
     现在你将在工作区src目录中拥有一个名为shuizao的新文件夹。
 
@@ -216,8 +216,15 @@ echo " source /opt/ros/humble/setup.bash" >> ~/.bashrc
     cd ~/dxy
     colcon build   # 编译工作空间所有功能包
     colcon build --packages-select <package_name>   #编译工作空间中指定名称的功能包，在功能包较多的情况下可以节省时间
-    source install/local_setup.sh
-### 4.3功能包的结构
+    source install/local_setup.sh   #要使用新的软件包和可执行文件，首先要获取您的主要 ROS 2 安装。然后，从目录内部运行以下命令来获取工作区。由于设置了环境变量到./.bashrc文件中，打开一个新的终端就能完成上述操作
+### 4.3使用软件包
+输入指令
+    
+    ros2 run my_package my_node
+终端返回
+
+    Hi from my_package.
+### 4.4功能包的结构
 具体参考ros2官网文档https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html<br>
 **Python功能包**<br>
 package.xml包含功能包的版权描述，和各种依赖的声明。
@@ -230,6 +237,85 @@ setup.py文件里边也包含一些版权信息，除此之外，还有“entry_
 
     ros2 pkg create --build-type ament_python --license Apache-2.0 py_pubsub
 
-### 5.2
+### 5.2写入发布者节点
+    cd dxy/src/py_pubsub/py_pubsub
+    wget https://raw.githubusercontent.com/ros2/examples/iron/rclpy/topics/minimal_publisher/examples_rclpy_minimal_publisher/publisher_member_function.py
+### 5.3添加依赖
+使用文本编辑器打开package.xml<br>
+如上一教程所述，请确保填写和标记\<description>\<maintainer>\<license>三个标签
 
+    <description>Examples of minimal publisher/subscriber using rclpy</description>
+    <maintainer email="2144654256@qq.com">hz</maintainer>
+    <license>Apache-2.0</license>
+
+在上面的行之后，添加与节点的 import 语句相对应的以下依赖项：
+    
+    <exec_depend>rclpy</exec_depend>
+    <exec_depend>std_msgs</exec_depend>
+
+### 5.4添加入口点
+打开setup.py文件。将maintainer 、maintainer_email、description和license字段按照package.xml中的内容做如下更改：
+
+    maintainer='hz',
+    maintainer_email='2144654256@qq.com',
+    description='Examples of minimal publisher/subscriber using rclpy',
+    license='Apache-2.0',
+在entry_points内的console_scripts字段中添加发布者的入口点如下：
+
+    entry_points={
+        'console_scripts': [
+                'talker = py_pubsub.publisher_member_function:main',
+        ],
+    },
+### 5.4检查setup.cfg
+应自动正确填充文件的内容，如下所示：
+
+    [develop]
+    script_dir=$base/lib/py_pubsub
+    [install]
+    install_scripts=$base/lib/py_pubsub
+### 5.5写入订阅节点
+
+    cd dxy/src/py_pubsub/py_pubsub
+    wget https://raw.githubusercontent.com/ros2/examples/iron/rclpy/topics/minimal_subscriber/examples_rclpy_minimal_subscriber/subscriber_member_function.py
+### 5.6添加入口点
+打开setup.py将订阅者节点的入口点添加到发布者的入口点下方,结果如下所示:
+    
+    entry_points={
+        'console_scripts': [
+                'talker = py_pubsub.publisher_member_function:main',
+                'listener = py_pubsub.subscriber_member_function:main',
+        ],
+    },
+### 5.7构建并运行
+#### 5.7.1检查依赖项
+
+    rosdep install -i --from-path src --rosdistro iron -y
+#### 5.7.2编译新包
+
+    colcon build --packages-select py_pubsub
+
+>这里遇到一点小小的问题，估计是之前安装colcon时执行的命令行有问题。
+
+>问题描述：执行colcon build --packages-select py_pubsub报错如下：
+![colcon error](/images/colconError.png)
+>
+>解决方法：
+    
+    sudo apt install python3-colcon-common-extensions
+#### 5.7.3获取安装文件
+执行
+
+    source install/setup.bash
+>由于我们设置了环境变量，所以只要打开一个新的终端也是可以的
+
+#### 5.7.4执行
+打开一个终端，执行
+
+    ros2 run py_pubsub talker
+
+再打开一个终端执行
+
+    ros2 run py_pubsub listener
+![5.7.4执行结果](/images/5.7.4执行结果.png)
 
