@@ -320,4 +320,28 @@ setup.py文件里边也包含一些版权信息，除此之外，还有“entry_
 ![5.7.4执行结果](/images/5.7.4执行结果.png)
 
 ## 六、节点
+按照[古月居](https://book.guyuehome.com/ROS2/2.%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/2.3_%E8%8A%82%E7%82%B9/)的教程来就好了
 
+## 七、话题
+按照按照[古月居](https://book.guyuehome.com/ROS2/2.%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/2.4_%E8%AF%9D%E9%A2%98/)的教程来就好了<br>
+#### 案例一：Hello World话题通信按照 [**五、编写简单的发布者和订阅者 （Python）**](#五编写简单的发布者和订阅者-python) 进行
+#### 案例二：机器视觉识别
+#### 案例三：机器视觉识别优化
+ROS中集成了usb相机的标准驱动，我们可以通过
+
+    sudo apt install ros-humble-usb-cam
+
+来安装该驱动，无论你用什么样的相机，只要符合usb接口协议，就可以直接使用ROS中的相机驱动节点，发布标准的图像话题了。
+### 话题命令行操作
+
+    ros2 topic list                # 查看话题列表
+    ros2 topic info <topic_name>   # 查看话题信息
+    ros2 topic hz <topic_name>     # 查看话题发布频率
+    ros2 topic bw <topic_name>     # 查看话题传输带宽
+    ros2 topic echo <topic_name>   # 查看话题数据
+    ros2 topic pub <topic_name> <msg_type> <msg_data>   # 发布话题消息
+
+## 八、服务
+按照按照[古月居](https://book.guyuehome.com/ROS2/2.%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/2.5_%E6%9C%8D%E5%8A%A1/)的教程来就好了<br>
+#### 案例一：加法求解器
+古月居教程在这里还没有详细叙述[创建自定义 msg 和 srv 文件](https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html)和[实现自定义接口](https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html)的内容，可以点击链接前往ros2官方文档浏览
