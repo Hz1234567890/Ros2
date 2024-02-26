@@ -342,7 +342,7 @@ ROS中集成了usb相机的标准驱动，我们可以通过
     ros2 topic pub <topic_name> <msg_type> <msg_data>   # 发布话题消息
 
 ## 八、服务
-按照按照[古月居](https://book.guyuehome.com/ROS2/2.%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/2.5_%E6%9C%8D%E5%8A%A1/)的教程来就好了<br>
+按照[古月居](https://book.guyuehome.com/ROS2/2.%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/2.5_%E6%9C%8D%E5%8A%A1/)的教程来就好了<br>
 #### 案例一：加法求解器
 古月居教程在这里还没有详细叙述[创建自定义 msg 和 srv 文件](https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html)和[实现自定义接口](https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html)的内容，可以点击链接前往ros2官方文档浏览。不过在[九、通信接口](#九通信接口)也会介绍，我觉得还是古月居的教程讲得更加清楚。
 
@@ -352,3 +352,8 @@ ROS中集成了usb相机的标准驱动，我们可以通过
     ros2 service type <service_name>   # 查看服务数据类型
     ros2 service call <service_name> <service_type> <service_data>   # 发送服务请求
 ## 九、通信接口
+按照[古月居](https://book.guyuehome.com/ROS2/2.%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/2.6_%E9%80%9A%E4%BF%A1%E6%8E%A5%E5%8F%A3/)的教程来就好了<br>
+### 接口命令行操作
+    ros2 interface list                    # 查看系统接口列表
+    ros2 interface show <interface_name>   # 查看某个接口的详细定义
+    ros2 interface package <package_name>  # 查看某个功能包中的接口定义
