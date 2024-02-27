@@ -366,4 +366,6 @@ ROS中集成了usb相机的标准驱动，我们可以通过
     ros2 action info <action_name>    # 查看服务数据类型
     ros2 action send_goal <action_name> <action_type> <action_data>   # 发送服务请求
 ## 十一、参数
-[古月居](https://book.guyuehome.com/ROS2/2.%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/2.9_%E5%88%86%E5%B8%83%E5%BC%8F%E9%80%9A%E4%BF%A1/)
+[古月居](https://book.guyuehome.com/ROS2/2.%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/2.9_%E5%88%86%E5%B8%83%E5%BC%8F%E9%80%9A%E4%BF%A1/)<br>
+
+
