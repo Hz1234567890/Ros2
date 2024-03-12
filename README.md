@@ -396,3 +396,10 @@ ROS中集成了usb相机的标准驱动，我们可以通过
     pip install empy==3.3.2
 
 # 解决了☺
+
+在运行
+
+    colcon build --packages-select mavros
+时出现了一推的warning，**不知道后面会不会出事情**。
+![warning1](/images/warining1.png)
+好的显然问题出现了
