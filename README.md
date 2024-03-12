@@ -377,4 +377,22 @@ ROS中集成了usb相机的标准驱动，我们可以通过
 <br>
 在运行![mavroserror1](/images/mavrosError1.png)时报错如下：
 ![error1](/images/error1.png)<br>
-**解决方法：**
+**解决方法：** 这里好像是我糊涂了，下面的依赖先安装
+    
+    sudo apt-get install ros-kinetic-mavlink
+    sudo apt-get install geographiclib-tools
+    sudo apt-get install ros-humble-geographic-msgs
+    sudo apt-get install ros-humble-libmavconn
+    sudo apt-get install ros-humble-geographic-*
+    sudo apt-get install geographiclib-*
+    sudo apt-get install libgeographic-*
+    sudo apt-get install ros-humble-eigen-stl-containers 
+    sudo apt-get install ros-humble-diagnostic-updater
+
+这样就解决了之前的报错，但是出现了新的报错。
+![error2](/images/error2.png)
+**解决方法：**[参考](https://blog.csdn.net/qq_34168988/article/details/135099372)
+
+    pip install empy==3.3.2
+
+# 解决了☺
