@@ -369,3 +369,12 @@ ROS中集成了usb相机的标准驱动，我们可以通过
 按照[古月居](https://book.guyuehome.com/ROS2/2.%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/2.9_%E5%88%86%E5%B8%83%E5%BC%8F%E9%80%9A%E4%BF%A1/)的教程进行<br>
 
 
+# 3.12安装humble版本的mavros
+#### 我是按照[mavros2的humble版本源码编译](https://blog.csdn.net/u014220146/article/details/135704394?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171024602316777224497821%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=171024602316777224497821&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-1-135704394-null-null.142^v99^pc_search_result_base7&utm_term=mavros-2.6.0.tar.gz&spm=1018.2226.3001.4187)进行的<br>
+**https://github.com/mavlink/mavros/releases
+这是mavros源码的github地址。
+我下载了2.6.0的压缩包**<br>
+<br>
+在运行![mavroserror1](/images/mavrosError1.png)时报错如下：
+![error1](/images/error1.png)<br>
+**解决方法：**
