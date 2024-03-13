@@ -403,3 +403,38 @@ ROS中集成了usb相机的标准驱动，我们可以通过
 时出现了一推的warning，**不知道后面会不会出事情**。
 ![warning1](/images/warining1.png)
 好的显然问题出现了
+
+## 3.13continue
+很奇怪今天在执行 colcon build --packages-select mavros 时warning好像不一样了。不过前面的第一个话是一样的，如下（忘记截图了，拿昨天的凑一下）
+![warning2](/images/warning2.png)
+然后我就执行了
+
+    colcon build --packages-select libmavconn
+编译了libmavconn包。
+接着继续执行colcon build --packages-select mavros，就只剩下面的warning了<br>**和昨天不一样！！！！！！！！！！**
+![warning3](/images/warning3.png)
+**解决方法**
+![ok3](/images/ok3.jpg)
+按照图中所示找到主文件夹/mavros-2.6.0/mavros下的setup.cfg文件。按照warning的提示修改<br>
+#### author-email    --->    author_email
+#### script-dir      --->    script_dir
+#### install-scripts --->    install_scripts
+
+
+
+现在运行colcon build --packages-select mavros的结果如下图所示
+![error3](/images/error3.png)
+不过我总感觉这个无伤大雅
+
+运行
+
+    ros2 launch mavros apm.launch
+报错如下：
+![error4](/images/error4.png)
+
+然后我去编译了mavros_extras包，执行
+
+    colcon build --packages-select mavros_extras
+无报错
+
+但是error4没有解决
