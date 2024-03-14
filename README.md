@@ -446,5 +446,7 @@ https://github.com/ArduPilot/ardupilot/tree/master/Tools/ros2
 ![error1](/images/3.14error1.png)
 解决方法：
 
-    pip install setuptools==60.5.0
+    pip install setuptools==61
 之后可能会有一些报错，但是只要根据提示更新就可以了
+
+# 头大！！！！！！！！！！！
