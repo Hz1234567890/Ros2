@@ -446,7 +446,6 @@ https://github.com/ArduPilot/ardupilot/tree/master/Tools/ros2
 ![error1](/images/3.14error1.png)
 解决方法：
 
-    pip install setuptools==61
-之后可能会有一些报错，但是只要根据提示更新就可以了
-
-# 头大！！！！！！！！！！！
+    pip3 uninstall setuptools-scm
+![method](/images/method_1.png)
+[参考链接](https://robotics.stackexchange.com/questions/104326/colcon-build-on-ros2-humble-outputs-listing-git-files-failed-pretending-there)
