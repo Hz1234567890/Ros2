@@ -449,3 +449,15 @@ https://github.com/ArduPilot/ardupilot/tree/master/Tools/ros2
     pip3 uninstall setuptools-scm
 ![method](/images/method_1.png)
 [参考链接](https://robotics.stackexchange.com/questions/104326/colcon-build-on-ros2-humble-outputs-listing-git-files-failed-pretending-there)
+
+
+
+## 报错
+在执行<br>
+
+    colcon build --packages-up-to ardupilot_dds_tests
+时报错如下<br>
+![报错图片](/images/报错.png)
+解决方法
+![解决办法](/images/解决办法.png)
+[参考链接](https://discuss.ardupilot.org/t/compiling-arducopter-4-5-0-with-enable-dds-failed/115632/3)
