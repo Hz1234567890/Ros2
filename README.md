@@ -461,3 +461,22 @@ https://github.com/ArduPilot/ardupilot/tree/master/Tools/ros2
 解决方法
 ![解决办法](/images/解决办法.png)
 [参考链接](https://discuss.ardupilot.org/t/compiling-arducopter-4-5-0-with-enable-dds-failed/115632/3)
+
+## 笔记
+在按照ardupilot官网的教程配置ros2的环境时请注意:<br>
+①不要照着CSDN或者其他地方的教程全局安装FASTDDS等，不然你的/usr/local/include和/usr/local/share中会出现fastdds、fastrtps、fastcdr、ucdr、uxr等包文件，这会让你变得不幸。如果出现了可以都删掉，colcon build再不通过就可以重装ros2了（至少当时是这样解决的）<br>
+②
+    
+    export ROS_DOMAIN_ID=22
+等给export ROS_DOMAIN_ID赋值的语句不要出现在~/.bashrc中。不知是什么原理，反正在执行ros2节点时，它使得/ap等ros2 topic无法正常发布。至于
+
+    ROS_LOCALHOST_ONLY=1
+查阅资料显示：
+
+* ROS_LOCALHOST_ONLY=1这个环境变量在机器人操作系统(ROS)中用于限制ROS通信仅在本地机器上进行。当设置了这个变量后,ROS节点只能与运行在同一台本地机器上的其他ROS节点进行通信,无法与运行在远程机器上的ROS节点通信。
+
+是否会导致后续问题尚不明确，但是先从~/.bashrc中去除了
+
+至此，ros2的dds环境配置完成，不过存在一个遗留问题
+![dds遗留问题](/images/dds遗留问题.png)
+不知道后面会不会收到影响，至少现在没有。
