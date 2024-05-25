@@ -439,7 +439,7 @@ ROS中集成了usb相机的标准驱动，我们可以通过
 
 但是error4没有解决
 
-# 3.14换了新思路
+## 3.14换了新思路
 https://github.com/ArduPilot/ardupilot/tree/master/Tools/ros2
 
 报错1
@@ -480,3 +480,9 @@ https://github.com/ArduPilot/ardupilot/tree/master/Tools/ros2
 至此，ros2的dds环境配置完成，不过存在一个遗留问题
 ![dds遗留问题](/images/dds遗留问题.png)
 不知道后面会不会收到影响，至少现在没有。
+
+# mavros树莓派与飞控连接
+![mavros树莓派与飞控连接](./images/mavros飞控树莓派连接错误.png)
+看了别人的帖子，才知道出现这个错误就是忘记给端口赋予权限。
+
+    sudo chmod 777 /dev/ttyACM0
