@@ -439,7 +439,7 @@ ROS中集成了usb相机的标准驱动，我们可以通过
 
 但是error4没有解决
 
-# 3.14换了新思路
+## 3.14换了新思路
 https://github.com/ArduPilot/ardupilot/tree/master/Tools/ros2
 
 报错1
@@ -485,7 +485,11 @@ https://github.com/ArduPilot/ardupilot/tree/master/Tools/ros2
 先参考一波鱼香ros2的教程
 [鱼香ros2教程](https://fishros.com/d2lros2foxy/#/)
 
+# mavros树莓派与飞控连接
+![mavros树莓派与飞控连接](./images/mavros飞控树莓派连接错误.png)
+看了别人的帖子，才知道出现这个错误就是忘记给端口赋予权限。
 
+    sudo chmod 777 /dev/ttyACM0
 
 # 今天跑了陆晨涛的代码时遇到了一点点的大问题
 具体报错如下：
@@ -517,3 +521,5 @@ https://github.com/ArduPilot/ardupilot/tree/master/Tools/ros2
     sudo rm libtiff.so.5
     sudo ln -s /usr/lib/x86_64-linux-gnu/libtiff.so.5 libtiff.so.5 
     # where 5 is the version found above
+
+
