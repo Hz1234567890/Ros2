@@ -480,3 +480,40 @@ https://github.com/ArduPilot/ardupilot/tree/master/Tools/ros2
 至此，ros2的dds环境配置完成，不过存在一个遗留问题
 ![dds遗留问题](/images/dds遗留问题.png)
 不知道后面会不会收到影响，至少现在没有。
+
+# 是时候开始完成dxy的ros节点了
+先参考一波鱼香ros2的教程
+[鱼香ros2教程](https://fishros.com/d2lros2foxy/#/)
+
+
+
+# 今天跑了陆晨涛的代码时遇到了一点点的大问题
+具体报错如下：
+![陆晨涛报错1](./images/陆晨涛图传编译报错1.png)
+解决方法：
+
+    #第一步
+    通过键入命令查找使用的 libcurl.so 版本
+    ldd /usr/lib/libgdal.so.30 | grep curl
+    
+
+    #第二步
+    更改 ~/anaconda3/lib 下的软链接
+    cd ~/anaconda3/lib
+    sudo rm libcurl.so.4
+    sudo ln -s /usr/lib/x86_64-linux-gnu/libcurl.so.4 libcurl.so.4  # where 4 is the version found above
+
+第二个报错其实和第一个一样，只是包的名称变了
+![陆晨涛报错2](./images/陆晨涛图传报错2.png)
+
+    #第一步
+    通过键入命令查找使用的 libtiff.so 版本
+    ldd /usr/lib/libgdal.so.30 | grep tiff
+    
+
+    #第二步
+    更改 ~/anaconda3/lib 下的软链接
+    cd ~/anaconda3/lib
+    sudo rm libtiff.so.5
+    sudo ln -s /usr/lib/x86_64-linux-gnu/libtiff.so.5 libtiff.so.5 
+    # where 5 is the version found above
